@@ -10,8 +10,20 @@ const Display = (props) => {
   let icon = props.weather.weather[0].icon;
   return (
     <Container className="text-center">
-      <Card>
+        <h1>{props.weather.name}, {props.weather.sys.country}</h1>
+        <h3>As of {date.toLocaleDateString()} at {date.toLocaleTimeString()}</h3>
+        <hr />
+        <h3>Currently {props.weather.main.temp}°C, feels like {props.weather.main.feels_like}°C <br/></h3>
+        
+        
+        Expect highs of {props.weather.main.temp_max}°C and lows of {props.weather.main.temp_min}°C
+        <hr />
+        
+      {/* <Card>
         <ListGroup variant="flush">
+            <ListGroup.Item>
+                As of {date.toLocaleDateString()} at {date.toLocaleTimeString()}
+            </ListGroup.Item>
           <ListGroup.Item>
           <img src={iconUrlFromCode(icon)} />
             The current temperature is {props.weather.main.temp}°C
@@ -24,13 +36,13 @@ const Display = (props) => {
             {props.weather.main.temp_max}°C
           </ListGroup.Item>
           <ListGroup.Item>
-            Currently, there is {props.weather.weather[0].main}
+            Current condition is: {props.weather.weather[0].description}
           </ListGroup.Item>
           <ListGroup.Item>
             Humidity: {props.weather.main.humidity}%
           </ListGroup.Item>
         </ListGroup>
-      </Card>
+      </Card> */}
     </Container>
   );
 };
