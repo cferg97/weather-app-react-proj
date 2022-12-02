@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
 import Display from "./Display";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MainWeather = () => {
   const [data, setData] = useState({});
@@ -34,18 +35,18 @@ const MainWeather = () => {
     }
   };
 
+
   return (
-    <Container fluid>
-      <h1>What's the weather in...</h1>
+    <Container>
       <Row className="justify-content-center align-items-center">
-        <Col md={6}>
+        <Col className="text-center">
           <input
             value={location}
             onChange={(event) => setLocation(event.target.value)}
             onKeyUp={searchLocation}
             placeholder="Search for a location..."
             type="text"
-            className="mb-4"
+            className="mb-4 text-center search-bar"
           />
         </Col>
         {isError && <Display weather={data} />}

@@ -6,19 +6,28 @@ const Display = (props) => {
     `http://openweathermap.org/img/wn/${code}@2x.png`;
 
   let date = fromUnixTime(props.weather.dt);
+  let sunUp = fromUnixTime(props.weather.sys.sunrise)
+  let sunDown = fromUnixTime(props.weather.sys.sunset)
   console.log(date);
   let icon = props.weather.weather[0].icon;
   return (
-    <Container className="text-center">
+    <Container className="text-center" id="p-bg">
         <h1>{props.weather.name}, {props.weather.sys.country}</h1>
-        <h3>As of {date.toLocaleDateString()} at {date.toLocaleTimeString()}</h3>
+        <h5>As of {date.toLocaleDateString()} at {date.toLocaleTimeString()}</h5>
         <hr />
-        <h3>Currently {props.weather.main.temp}°C, feels like {props.weather.main.feels_like}°C <br/></h3>
+        <h3>Currently {props.weather.main.temp}°C</h3>
         
         
-        Expect highs of {props.weather.main.temp_max}°C and lows of {props.weather.main.temp_min}°C
-        <hr />
+        <p >Expect highs of {props.weather.main.temp_max}°C and lows of {props.weather.main.temp_min}°C <br />
+        <img src={iconUrlFromCode(icon)} alt="weather icon" className="weather-icon"/>
+        <hr /></p>
+        <p>
+        <i class="fa-solid fa-wind"></i> {props.weather.wind.speed} m/s
+        </p>
         
+
+        <i class="fa-solid fa-moon"></i> {sunDown.toLocaleTimeString()} | <i class="fa-regular fa-sun"></i> {sunUp.toLocaleTimeString()}
+
       {/* <Card>
         <ListGroup variant="flush">
             <ListGroup.Item>
