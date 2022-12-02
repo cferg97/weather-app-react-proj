@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Row, Spinner} from "react-bootstrap";
 import Display from "./Display";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const MainWeather = () => {
   const [data, setData] = useState({});
@@ -29,9 +28,10 @@ const MainWeather = () => {
     } catch (error) {
       console.log(error);
       setTimeout(() => {
+        alert("Couldn't fetch data")
         setIsLoading(false);
         setIsError(true);
-      });
+      }, 2000);
     }
   };
 
@@ -49,7 +49,8 @@ const MainWeather = () => {
             className="mb-4 text-center search-bar"
           />
         </Col>
-        {isError && <Display weather={data} />}
+        {isLoading && <Spinner />}
+        {isError && <Display weather={data} fetch={searchLocation()}/>}
       </Row>
     </Container>
   );

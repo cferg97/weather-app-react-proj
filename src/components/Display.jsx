@@ -1,7 +1,10 @@
 import { Row, Col, Container, Card, ListGroup } from "react-bootstrap";
 import { fromUnixTime } from "date-fns";
+import {useState, useEffect} from "react"
 
 const Display = (props) => {
+  const show = true
+
   const iconUrlFromCode = (code) =>
     `http://openweathermap.org/img/wn/${code}@2x.png`;
 
@@ -10,6 +13,7 @@ const Display = (props) => {
   let sunDown = fromUnixTime(props.weather.sys.sunset)
   console.log(date);
   let icon = props.weather.weather[0].icon;
+  
   return (
     <Container className="text-center" id="p-bg">
         <h1>{props.weather.name}, {props.weather.sys.country}</h1>
@@ -19,12 +23,13 @@ const Display = (props) => {
         
         
         <p >Expect highs of {props.weather.main.temp_max}°C and lows of {props.weather.main.temp_min}°C <br />
-        <img src={iconUrlFromCode(icon)} alt="weather icon" className="weather-icon"/>
+        <img src={iconUrlFromCode(icon)} alt="weather icon" className="weather-icon"/> <br />
+        Humidity: {props.weather.main.humidity}% <i class="fa-solid fa-cloud-rain"></i>
         <hr /></p>
         <p>
         <i class="fa-solid fa-wind"></i> {props.weather.wind.speed} m/s
         </p>
-        
+        <hr />
 
         <i class="fa-solid fa-moon"></i> {sunDown.toLocaleTimeString()} | <i class="fa-regular fa-sun"></i> {sunUp.toLocaleTimeString()}
 
