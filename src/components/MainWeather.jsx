@@ -52,6 +52,9 @@ const MainWeather = () => {
       searchLocation();
       setTypeError(false)
     }
+    if (event.key === "Backspace"){
+      setToShow(false)
+    }
     else{
       setTypeError(true)
       setTimeout(() => {
@@ -77,7 +80,6 @@ const MainWeather = () => {
         {show && <Display weather={data}/>}
         {isError && <AlertMessage location={location} />}
         {typeError && <Warning text="press enter to search" />}
-
       </Row>
     </Container>
   );
