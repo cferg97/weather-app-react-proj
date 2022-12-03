@@ -1,4 +1,4 @@
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, } from "react-bootstrap";
 import MainWeather from "./components/MainWeather";
 import Home from "./components/Home";
 import MyFooter from "./components/myFooter";
