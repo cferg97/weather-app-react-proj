@@ -70,7 +70,7 @@ const MainWeather = () => {
           <input
             value={location}
             onChange={(event) => setLocation(event.target.value)}
-            onKeyDown={(e) => handleEnter(e)}
+            onKeyPress={(e) => handleEnter(e)}
             placeholder="Search for a location..."
             type="text"
             className="mb-4 text-center search-bar"
